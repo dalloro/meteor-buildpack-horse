@@ -56,6 +56,12 @@ the following variable in your Heroku Config Vars:
    
     BUILDPACK_PRELAUNCH_METEOR
 
+## Meteor settings
+
+This buildpack load your meteor settings into the METEOR_SETTINGS environment variable
+used in production, if you saved your settings in a file called ``settings.json`` located
+at the root of your application folder.
+
 ## Why horse?
 
 There are a gazillian forks and branches of various buildpacks remixing the

@@ -106,6 +106,18 @@ cat > "$APP_CHECKOUT_DIR"/.profile.d/path.sh <<EOF
   export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:\$HOME/$COMPILE_DIR_SUFFIX/lib
 EOF
 
+
+# Add a METEOR_SETTINGS variable that load the standard settings.json Meteor 
+# settings file, if METEOR_SETTINGS is not set as a config var
+if [ -z "$METEOR_SETTINGS" ]; then 
+echo "-----> Adding METEOR_SETTINGS environment"
+MSETTINGS=$(cat $APP_CHECKOUT_DIR/settings.json)
+cat > "$APP_CHECKOUT_DIR"/.profile.d/meteor_settings.sh <<EOF
+  #!/bin/sh
+  export METEOR_SETTINGS=$MSETTINGS
+EOF
+fi
+
 #
 # Extras
 #
