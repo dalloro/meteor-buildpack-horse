@@ -113,7 +113,7 @@ if [ -z "$METEOR_SETTINGS" ]; then
 echo "-----> Adding METEOR_SETTINGS environment"
 cat > "$APP_CHECKOUT_DIR"/.profile.d/meteor_settings.sh <<EOF
   #!/bin/sh
-  export METEOR_SETTINGS=$(cat $APP_CHECKOUT_DIR/settings.json)
+  export METEOR_SETTINGS="$(cat $APP_CHECKOUT_DIR/settings.json)"
 EOF
 fi
 
