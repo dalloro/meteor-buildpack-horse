@@ -111,10 +111,9 @@ EOF
 # settings file, if METEOR_SETTINGS is not set as a config var
 if [ -z "$METEOR_SETTINGS" ]; then 
 echo "-----> Adding METEOR_SETTINGS environment"
-MSETTINGS=$(cat $APP_CHECKOUT_DIR/settings.json)
 cat > "$APP_CHECKOUT_DIR"/.profile.d/meteor_settings.sh <<EOF
   #!/bin/sh
-  export METEOR_SETTINGS=$MSETTINGS
+  export METEOR_SETTINGS=$(cat $APP_CHECKOUT_DIR/settings.json)
 EOF
 fi
 
