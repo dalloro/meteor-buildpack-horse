@@ -162,7 +162,8 @@ if [ -e "$APP_SOURCE_DIR"/package.json ]; then
 fi
 
 # Install deps
-$METEOR npm install
+echo "$METEOR npm install --save react react-dom react-mounter kurento-utils"
+$METEOR npm install --save react react-dom react-mounter kurento-utils
 
 # Related to https://github.com/meteor/meteor/issues/2796 and 
 # https://github.com/meteor/meteor/issues/2606.  Some packages only build their
