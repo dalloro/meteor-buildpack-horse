@@ -195,6 +195,13 @@ if [ -e "$APP_SOURCE_DIR"/package.json ]; then
     cat - "$COMPILE_DIR"/app/programs/server/package.json
     echo "-----> (3)"
     cat "$APP_SOURCE_DIR"/package.json | sed -e ':a' -e 'N' -e '$!ba' -e 's/\n/T@G/g'|sed -ne 's|.*dependencies": {\([^}]*\)}.*|\1|p'|cat - "$COMPILE_DIR"/app/programs/server/package.json |sed -e ':a' -e 'N' -e '$!ba' -e 's/\n/G@T/g'|sed -ne 's|T@G\(.*\)T@G[[:blank:]]*G@T\(.*dependencies": {G@T\)\([^}]*\)\(}.*G@T}\)|\2\1,T@G\3\4|p'|sed -e $'s|T@G|\\\n|g'|sed -e $'s|G@T|\\\n|g'
+    echo "-----> (4)"
+    cat "$APP_SOURCE_DIR"/package.json | sed -e ':a' -e 'N' -e '$!ba' -e 's/\n/T@G/g'|sed -ne 's|.*dependencies": {\([^}]*\)}.*|\1|p'|cat - "$COMPILE_DIR"/app/programs/server/package.json |sed -e ':a' -e 'N' -e '$!ba' -e 's/\n/G@T/g'|sed -ne 's|T@G\(.*\)T@G[[:blank:]]*G@T\(.*dependencies": {G@T\)\([^}]*\)\(}.*G@T}\)|\2\1,T@G\3\4|p'|sed -e $'s|T@G|\\\n|g'
+    echo "-----> (5)"
+    cat "$APP_SOURCE_DIR"/package.json | sed -e ':a' -e 'N' -e '$!ba' -e 's/\n/T@G/g'|sed -ne 's|.*dependencies": {\([^}]*\)}.*|\1|p'|cat - "$COMPILE_DIR"/app/programs/server/package.json |sed -e ':a' -e 'N' -e '$!ba' -e 's/\n/G@T/g'|sed -ne 's|T@G\(.*\)T@G[[:blank:]]*G@T\(.*dependencies": {G@T\)\([^}]*\)\(}.*G@T}\)|\2\1,T@G\3\4|p'|sed -e $'s|T@G|\\\n|g'|sed -e $'s|G@T|\\\n|g'|sed -ne 's|\||p'
+
+
+
     cat "$APP_SOURCE_DIR"/package.json | sed -e ':a' -e 'N' -e '$!ba' -e 's/\n/T@G/g'|sed -ne 's|.*dependencies": {\([^}]*\)}.*|\1|p'|cat - "$COMPILE_DIR"/app/programs/server/package.json |sed -e ':a' -e 'N' -e '$!ba' -e 's/\n/G@T/g'|sed -ne 's|T@G\(.*\)T@G[[:blank:]]*G@T\(.*dependencies": {G@T\)\([^}]*\)\(}.*G@T}\)|\2\1,T@G\3\4|p'|sed -e $'s|T@G|\\\n|g'|sed -e $'s|G@T|\\\n|g' > "$COMPILE_DIR"/app/programs/server/package.json_
     mv "$COMPILE_DIR"/app/programs/server/package.json_ "$COMPILE_DIR"/app/programs/server/package.json
 fi
